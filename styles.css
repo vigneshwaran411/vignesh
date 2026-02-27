@@ -1,0 +1,17 @@
+.container {
+  max-width: 100%;
+  padding: 15px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+  }
+  .container {
+    padding: 10px;
+  }
+}
