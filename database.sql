@@ -1,0 +1,25 @@
+-- Database Schema for Garbage Monitoring System
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(50) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE GarbageBins (
+    BinID INT PRIMARY KEY AUTO_INCREMENT,
+    Location VARCHAR(255) NOT NULL,
+    Status ENUM('Full', 'Empty', 'In Use') NOT NULL,
+    LastChecked TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Reports (
+    ReportID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    BinID INT,
+    ReportedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (BinID) REFERENCES GarbageBins(BinID)
+);
